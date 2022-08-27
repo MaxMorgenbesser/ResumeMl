@@ -1,14 +1,33 @@
 import { useContext } from "react"
 import { data } from "../../App"
 
+
 const ResUpload = ()=>{
-const {setFileBase64,fileBase64} = useContext(data)
+const {setFileBase64,filebase64} = useContext(data)
+
+
+
+
+
+const addRes = () => {
+    fetch("http://localhost:5050/addresume", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({filebase64}),
+    })
+      .then((res) => res.json())
+      .then(data)
+      .catch((err) => console.log(err));
+  };
+
 
 function formSubmit(e) {
     e.preventDefault();
     // Submit your form with the filebase64 as 
     // one of your fields
-    console.log({fileBase64})
+    console.log({filebase64})
 }
 
 function convertFile(files) {
@@ -27,11 +46,18 @@ function convertFile(files) {
   }
 
     return (<>
-    
-   <form onSubmit={formSubmit}>
-   <input type="file" onChange={(e)=> convertFile(e.target.files)}   accept="application/pdf" />
-   <button>Submit</button>
-    </form></>)
+    <br/>
+   <form onSubmit={
+    formSubmit
+}>
+   <input  type="file" onChange={(e)=> convertFile(e.target.files)}   accept="application/pdf" />
+   <button onClick={addRes}>Submit</button>
+    </form>
+    {(filebase64.indexOf("application/pdf") > -1)  && 
+             <embed src={filebase64} width="800px" height="2100px" />
+             }
+    </>)
 }
+
 
 export default ResUpload
