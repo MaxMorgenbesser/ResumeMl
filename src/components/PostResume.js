@@ -1,4 +1,4 @@
-import ResUpload from "./ResUpload/ResUpload"
+import ResUpload from "./PostResumeComponents/ResUpload"
 
 const PostResume=()=>{
     return (<>Post resume page

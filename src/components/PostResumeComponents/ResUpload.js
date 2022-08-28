@@ -6,9 +6,6 @@ const ResUpload = ()=>{
 const {setFileBase64,filebase64} = useContext(data)
 
 
-
-
-
 const addRes = () => {
     fetch("http://localhost:5050/addresume", {
       method: "POST",

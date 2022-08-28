@@ -1,5 +1,7 @@
+import RateResumeCarousel from "./RateResumesComponents/RateResumeCarousel"
+
 const RateResume =()=> {
-return (<>Rate resumes</>)
+return (<><RateResumeCarousel/></>)
 }
 
 export default RateResume
