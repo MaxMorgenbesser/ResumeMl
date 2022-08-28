@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const contentStyle = {
     height: '160px',
-    color: '#fff',
+    color: 'blue',
     lineHeight: '160px',
     textAlign: 'center',
     background: '#364d79',
@@ -31,16 +31,15 @@ export default function RateResumeCarousel(){
     console.log(resumes)
       return (
         <Carousel afterChange={onChange}>
-        {resumes.map((resume)=>{
-            {console.log(resume)}
-          <div>
-            <h3 style={contentStyle}>  
-             <embed source={resume.filebase64} width="800px" height="2100px" />
-             </h3>
-          </div>
+        {resumes.map(resume=>{
+           return( <div><embed src = {resume.filebase64} width="100%" height="2000px" style={contentStyle}/></div>)
         })}
-        </Carousel>
+    </Carousel>
         
       );
-      }
+}else {
+    return <h1>No resumes to rate at the moment </h1>
+}
+
+
 }
