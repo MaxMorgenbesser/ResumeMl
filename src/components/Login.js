@@ -34,9 +34,11 @@ const LoginButton = () => {
 
   return (
     <>
+    {!loggedIn&&
       <Button  onClick={showModal}>
         Login!
       </Button>
+      }
       { 
       !loggedIn&&
       <Modal

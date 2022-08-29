@@ -1,10 +1,11 @@
 import { useContext } from "react"
 import { data } from "../../App"
+import NotLoggedInYet from "../NotLoggedInYet"
 
 
 const ResUpload = ()=>{
 const {setFileBase64,filebase64} = useContext(data)
-
+const {loggedIn} = useContext(data)
 
 const addRes = () => {
     fetch("https://final-api-mam.web.app/addresume", {
@@ -43,19 +44,25 @@ function convertFile(files) {
     }
   }
 
-    return (<>
+    return (
+   
+    <>
+    {!loggedIn? <NotLoggedInYet/>:
+    <>
     <br/>
    <form onSubmit={
     formSubmit
 }>
    <input  type="file" onChange={(e)=> convertFile(e.target.files)}   accept="application/pdf" />
-   <button onClick={ 
+   
+   {filebase64&&<button onClick={ 
     addRes
-  }>Submit</button>
+  }>Submit</button>}
     </form>
+
     {(filebase64.indexOf("application/pdf") > -1)  && 
              <embed src={filebase64} width="800px" height="2100px" />
-             }
+ } </>        }
     </>)
 }
 
