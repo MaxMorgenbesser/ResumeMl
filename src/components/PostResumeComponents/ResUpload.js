@@ -7,7 +7,7 @@ const {setFileBase64,filebase64} = useContext(data)
 
 
 const addRes = () => {
-    fetch("http://localhost:5050/addresume", {
+    fetch("https://final-api-mam.web.app/addresume", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

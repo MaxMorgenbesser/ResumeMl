@@ -17,7 +17,7 @@ const Navbar=()=>{
     </Link>
     </Nav.Item>
     <Nav.Item>
-    <Link as={Link} to='/topfive' ><Button>Top Five Rssumes!</Button>
+    <Link as={Link} to='/topfive' ><Button>Top Five Resumes!</Button>
     </Link>
     </Nav.Item>
     <Nav.Item>
