@@ -1,15 +1,18 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { initializeApp } from "firebase/app";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword,GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
 import { firebaseConfig } from "./FirebaseConfig";
-// import { app } from "./FirebaseConfig";
+import { app } from "./FirebaseConfig";
 
 // const app = initializeApp(firebaseConfig);
 
-const LoginForm= ({ setLoggedIn }) => {
+import { data } from "../../App";
+
+const LoginForm= () => {
+  const {loggedIn, setLoggedin} = useContext(data)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-  
+
 
   const connectAuth = () =>{
       const app = initializeApp(firebaseConfig);
@@ -23,7 +26,7 @@ const LoginForm= ({ setLoggedIn }) => {
       .catch(err => alert(err))
       if (user){
           console.log(user.user)
-          setLoggedIn(true)
+          setLoggedin(true)
       }
   }
   
@@ -33,7 +36,7 @@ const LoginForm= ({ setLoggedIn }) => {
      .catch(err=>alert(err))
       if (user){ 
           console.log(user.user)
-          setLoggedIn(true)}
+          setLoggedin(true)}
   }
   
   
@@ -48,7 +51,8 @@ const LoginForm= ({ setLoggedIn }) => {
   const user = await createUserWithEmailAndPassword(auth,email,password)
   .catch(err=>alert(err.message))
   //if all okay
-      if (user){setLoggedIn(true)}
+      if (user)
+      {setLoggedin(true)}
     };
   
   

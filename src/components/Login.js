@@ -1,20 +1,60 @@
-import { data } from "../App"
-import { useContext, useState } from "react"
-import { Link } from 'react-router-dom';
-// import Login from "./landingpagecomponents/LoginForm";
-import LoginForm from "./landingpagecomponents/LoginForm";
-import Modal from "antd/lib/modal/Modal";
-import { Button } from "antd";
+import { Button, Modal } from 'antd';
+import React, { useState } from 'react';
+import LoginForm from './landingpagecomponents/LoginForm';
+import { useContext } from 'react';
+import { data } from '../App';
 
-const Login=()=>{
-const {Loggedin, setLoggedin}=useContext(data)
-const {modal,setModal}=useState(false)
 
-return(<nav>
-<Link as={Link} to='/Post' ><Button>Login</Button>
-    </Link>
-    </nav>)
+const LoginButton = () => {
+    const {loggedIn, setLoggedin} = useContext(data)
 
+    
+  const [visible, setVisible] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const [modalText, setModalText] = useState('Content of the modal');
+
+  const showModal = () => {
+    setVisible(true);
+  };
+
+  const handleOk = () => {
+    setModalText('The modal will be closed after two seconds');
+    setConfirmLoading(true);
+    setTimeout(() => {
+      setVisible(false);
+      setConfirmLoading(false);
+    }, 2000);
+  };
+
+  const handleCancel = () => {
+    console.log('Clicked cancel button');
+    setVisible(false);
+  };
+
+  return (
+    <>
+      <Button  onClick={showModal}>
+        Login!
+      </Button>
+      { 
+      !loggedIn&&
+      <Modal
+        title="Title"
+        visible={visible}
+        onOk={handleOk}
+        confirmLoading={confirmLoading}
+        onCancel={handleCancel}
+      >
+      <><LoginForm/></> 
+      </Modal>
 }
+    </>
+  );
+};
 
-export default Login
+export default LoginButton;
+
+    
+
+
+

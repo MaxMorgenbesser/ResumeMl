@@ -17,6 +17,7 @@ const addRes = () => {
       .then((res) => res.json())
       .then(data)
       .catch((err) => console.log(err));
+      setFileBase64('')
   };
 
 
@@ -48,7 +49,9 @@ function convertFile(files) {
     formSubmit
 }>
    <input  type="file" onChange={(e)=> convertFile(e.target.files)}   accept="application/pdf" />
-   <button onClick={addRes}>Submit</button>
+   <button onClick={ 
+    addRes
+  }>Submit</button>
     </form>
     {(filebase64.indexOf("application/pdf") > -1)  && 
              <embed src={filebase64} width="800px" height="2100px" />
