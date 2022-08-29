@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button"
 import { Link } from 'react-router-dom';
 import React from "react";
 import './css/Navbar.css'
+import HandleLogout from "./logoutcomponents/HandleLogout";
 
 
 const Navbar=()=>{
@@ -22,8 +23,7 @@ const Navbar=()=>{
     </Link>
     </Nav.Item>
     <Nav.Item>
-    <Link as={Link} to='/' ><Button>Signout</Button>
-    </Link>
+    <HandleLogout/>
     </Nav.Item>
     </Nav>
      </React.Fragment>)

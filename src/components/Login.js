@@ -3,12 +3,13 @@ import React, { useState } from 'react';
 import LoginForm from './landingpagecomponents/LoginForm';
 import { useContext } from 'react';
 import { data } from '../App';
+import { Link } from 'react-router-dom';
 
 
 const LoginButton = () => {
     const {loggedIn, setLoggedin} = useContext(data)
 
-    
+
   const [visible, setVisible] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [modalText, setModalText] = useState('Content of the modal');
@@ -48,6 +49,10 @@ const LoginButton = () => {
       <><LoginForm/></> 
       </Modal>
 }
+{showModal&&loggedIn? 
+    <Link as={Link} to='/Post' ><Button>Lets go!</Button>
+    </Link>
+:<></>}
     </>
   );
 };
