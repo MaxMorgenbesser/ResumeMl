@@ -15,9 +15,9 @@ export const data = createContext();
 function App() {
   const [loggedIn, setLoggedin] = useState(false);
   const [filebase64,setFileBase64] = useState("")
-  const [user,SetUser] = useState('')
+  const [user,setUser] = useState('')
   return (
-    <data.Provider value={{ loggedIn, setLoggedin,setFileBase64,filebase64,user,SetUser }}>
+    <data.Provider value={{ loggedIn, setLoggedin,setFileBase64,filebase64,user,setUser }}>
       <BrowserRouter>
         <Routes>
           <Route

@@ -5,7 +5,10 @@ import NotLoggedInYet from "../NotLoggedInYet"
 
 const ResUpload = ()=>{
 const {setFileBase64,filebase64} = useContext(data)
-const {loggedIn} = useContext(data)
+const {loggedIn,user} = useContext(data)
+
+
+
 
 const addRes = () => {
     fetch("https://final-api-mam.web.app/addresume", {

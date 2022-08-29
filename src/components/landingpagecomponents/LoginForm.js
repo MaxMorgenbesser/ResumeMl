@@ -9,7 +9,7 @@ import { app } from "./FirebaseConfig";
 import { data } from "../../App";
 
 const LoginForm= () => {
-  const {loggedIn, setLoggedin} = useContext(data)
+  const {loggedIn, setLoggedin,setUser} = useContext(data)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -23,6 +23,7 @@ const LoginForm= () => {
       const auth = await connectAuth()
       const provider = new GoogleAuthProvider()
       const user = await signInWithPopup(auth,provider)
+   
       .catch(err => alert(err))
       if (user){
           console.log(user.user)
