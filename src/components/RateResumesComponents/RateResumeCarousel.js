@@ -1,6 +1,7 @@
-import { Button, Carousel, Input } from "antd";
+import { Button, Carousel, Input,Space,Spin } from "antd";
 import { useEffect, useState } from "react";
 import "./RateResumeCss.css";
+
 const contentStyle = {
   height: "1600px",
   lineHeight: "160px",
@@ -80,6 +81,11 @@ export default function RateResumeCarousel() {
       </Carousel>
     );
   } else {
-    return <h1>No resumes to rate at the moment </h1>;
+    return (<>  
+    <Space size="middle">
+    <Spin size="small" />
+    <Spin />
+    <Spin size="large" />
+  </Space> </>);
   }
 }
