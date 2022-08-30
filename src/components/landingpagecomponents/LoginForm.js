@@ -9,7 +9,7 @@ import { app } from "./FirebaseConfig";
 import { data } from "../../App";
 
 const LoginForm= () => {
-  const {loggedIn, setLoggedin,setUser} = useContext(data)
+  const {loggedIn, setLoggedin,setUserInfo} = useContext(data)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -28,6 +28,7 @@ const LoginForm= () => {
       if (user){
           console.log(user.user)
           setLoggedin(true)
+          setUserInfo(user.user.uid)
       }
   }
   
@@ -38,6 +39,7 @@ const LoginForm= () => {
       if (user){ 
           console.log(user.user)
           setLoggedin(true)}
+          setUserInfo(user.user.uid)
   }
   
   
@@ -53,7 +55,10 @@ const LoginForm= () => {
   .catch(err=>alert(err.message))
   //if all okay
       if (user)
-      {setLoggedin(true)}
+      console.log(user.user)
+      setLoggedin(true)
+      setUserInfo(user.user.uid)
+      
     };
   
   

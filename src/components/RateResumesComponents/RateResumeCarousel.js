@@ -1,5 +1,6 @@
 import { Button, Carousel, Input,Space,Spin } from "antd";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { data } from "../../App";
 import "./RateResumeCss.css";
 
 const contentStyle = {
@@ -13,12 +14,13 @@ const contentStyle = {
 export default function RateResumeCarousel() {
   const [resumes, setResumes] = useState("");
   const [score, setScore] = useState(null);
+  const {userInfo} = useContext(data)
   const onChange = (currentSlide) => {
     console.log(currentSlide);
   };
 
-  const updateRes = (id, userGrade) => {
-    console.log(id, userGrade);
+  const updateRes = (id, userGrade,userInfo) => {
+    console.log(id, userGrade,userInfo);
 
     fetch(`https://final-api-mam.web.app/${id}`, {
       method: "PUT",
@@ -42,13 +44,14 @@ export default function RateResumeCarousel() {
       .catch((err) => console.log(err));
   }, []);
 
-  function handleScoreButton(id, score) {
-    updateRes(id, score);
+  function handleScoreButton(id, score,userInfo) {
+    updateRes(id, score,userInfo);
     setScore("");
     console.log(id, score);
   }
   if (resumes) {
-    console.log(resumes);
+    console.log(resumes)
+    console.log(userInfo)
     return (
       <Carousel afterChange={onChange}>
         {resumes.map((resume) => {
@@ -64,7 +67,7 @@ export default function RateResumeCarousel() {
               ></Input>
               {score > 0 && score <= 100 && (
                 <Button
-                  onClick={() => handleScoreButton(resume._id, Number(score))}
+                  onClick={() => handleScoreButton(resume._id, Number(score),userInfo)}
                 >
                   Submit
                 </Button>
@@ -89,3 +92,4 @@ export default function RateResumeCarousel() {
   </Space> </>);
   }
 }
+
