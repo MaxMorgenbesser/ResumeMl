@@ -1,73 +1,77 @@
-import { useContext } from "react"
-import { data } from "../../App"
-import NotLoggedInYet from "../NotLoggedInYet"
+// import pdf from "pdf-parse";
+// const pdf = require('pdf-parse');
+import { useContext, useState } from "react";
+import { data } from "../../App";
+import NotLoggedInYet from "../NotLoggedInYet";
 
+const ResUpload = () => {
+  const { setFileBase64, filebase64 } = useContext(data);
+  const { loggedIn, user } = useContext(data);
+  const [pdfWords, setPDFWords] = useState("");
 
-const ResUpload = ()=>{
-const {setFileBase64,filebase64} = useContext(data)
-const {loggedIn,user} = useContext(data)
-
-
-
-
-const addRes = () => {
+  const addRes = () => {
+    //http://localhost:5050
     fetch("https://final-api-mam.web.app/addresume", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({filebase64}),
+      body: JSON.stringify({ filebase64 }),
     })
       .then((res) => res.json())
-      .then(data)
+      .then(data=>console.log(data))
       .catch((err) => console.log(err));
-      setFileBase64('')
+    setFileBase64("");
   };
 
-
-function formSubmit(e) {
+  function formSubmit(e) {
     e.preventDefault();
-    // Submit your form with the filebase64 as 
+    // Submit your form with the filebase64 as
     // one of your fields
-    console.log({filebase64})
-}
+    console.log({ filebase64 });
+  }
+  function readPDF() {}
 
-function convertFile(files) {
+  function convertFile(files) {
     if (files) {
-      const fileRef = files[0] || ""
-      const fileType = fileRef.type || ""
-      console.log("This file upload is of type:",fileType)
-      const reader = new FileReader()
-      reader.readAsBinaryString(fileRef)
-      reader.onload=(ev) => {
+      const fileRef = files[0] || "";
+      const fileType = fileRef.type || "";
+      console.log("This file upload is of type:", fileType);
+      const reader = new FileReader();
+      reader.readAsBinaryString(fileRef);
+      reader.onload = (ev) => {
         // convert it to base64
-        console.log(fileType)
-        setFileBase64(`data:${fileType};base64,${btoa(ev.target.result)}`)
-      }
+        console.log(fileType);
+        setFileBase64(`data:${fileType};base64,${btoa(ev.target.result)}`);
+        console.log(filebase64)
+      };
     }
   }
 
-    return (
-   
+  return (
     <>
-    {!loggedIn? <NotLoggedInYet/>:
-    <>
-    <br/>
-   <form onSubmit={
-    formSubmit
-}>
-   <input  type="file" onChange={(e)=> convertFile(e.target.files)}   accept="application/pdf" />
-   
-   {filebase64&&<button onClick={ 
-    addRes
-  }>Submit</button>}
-    </form>
+      {!loggedIn ? (
+        <NotLoggedInYet />
+      ) : (
+        <>
+          <br />
+          <form onSubmit={formSubmit}>
+            {console.log(user)}
+            <input
+              type="file"
+              onChange={(e) => convertFile(e.target.files)}
+              accept="application/pdf"
+            />
 
-    {(filebase64.indexOf("application/pdf") > -1)  && 
-             <embed src={filebase64} width="800px" height="2100px" />
- } </>        }
-    </>)
-}
+            {filebase64 && <button onClick={addRes}>Submit</button>}
+          </form>
+          {filebase64.indexOf("application/pdf") > -1 && (
+            <embed src={filebase64} width="800px" height="2100px" />
+          )}{" "}
+        </>
+      )}
+    </>
+  );
+};
 
-
-export default ResUpload
+export default ResUpload;

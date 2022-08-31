@@ -73,7 +73,7 @@ export default function RateResumeCarousel() {
                 </Button>
               )}
               <embed
-                src={resume.filebase64}
+                src={resume.newRes.filebase64}
                 width="100%"
                 height="200px"
                 style={contentStyle}
