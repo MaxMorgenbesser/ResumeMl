@@ -1,13 +1,34 @@
 // import pdf from "pdf-parse";
 // const pdf = require('pdf-parse');
 import { useContext, useState } from "react";
+import { useEffect } from "react";
 import { data } from "../../App";
 import NotLoggedInYet from "../NotLoggedInYet";
 
+
 const ResUpload = () => {
   const { setFileBase64, filebase64 } = useContext(data);
-  const { loggedIn, user } = useContext(data);
-  const [pdfWords, setPDFWords] = useState("");
+  const { loggedIn, user, id , setID, input ,setInput , output,setOutput } = useContext(data);
+  
+ 
+ 
+  
+    useEffect(() => {
+      fetch("https://final-api-mam.web.app/getresumes")
+        .then((res) => res.json())
+        .then((resumes) => {resumes.map(
+          (resume)=>{
+            if (resume.score){
+            setInput((input)=>[...input,resume.words])
+            setOutput((output)=>[...output,(resume.score/resume.responses)]) 
+}
+        })})
+        .catch((err) => console.log(err));
+    }, [setInput,setOutput]);
+
+  
+
+
 
   const addRes = () => {
     //http://localhost:5050
@@ -19,10 +40,13 @@ const ResUpload = () => {
       body: JSON.stringify({ filebase64 }),
     })
       .then((res) => res.json())
-      .then(data=>console.log(data))
+      .then(data=>setID(data))
       .catch((err) => console.log(err));
     setFileBase64("");
   };
+
+
+
 
   function formSubmit(e) {
     e.preventDefault();
@@ -30,7 +54,9 @@ const ResUpload = () => {
     // one of your fields
     console.log({ filebase64 });
   }
-  function readPDF() {}
+ 
+
+
 
   function convertFile(files) {
     if (files) {
@@ -48,8 +74,13 @@ const ResUpload = () => {
     }
   }
 
+
+
   return (
+
     <>
+    {input!==[]&&console.log(input)}
+    {output!==[]&&console.log(output)}
       {!loggedIn ? (
         <NotLoggedInYet />
       ) : (

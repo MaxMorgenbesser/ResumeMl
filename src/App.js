@@ -16,8 +16,13 @@ function App() {
   const [loggedIn, setLoggedin] = useState(false);
   const [filebase64,setFileBase64] = useState("")
   const [userInfo,setUserInfo] = useState('')
+  const [id,setID] = useState('')
+  const [output,setOutput]=useState([])
+  const [input,setInput]=useState([])
+
+
   return (
-    <data.Provider value={{ loggedIn, setLoggedin,setFileBase64,filebase64,userInfo,setUserInfo }}>
+    <data.Provider value={{input,setInput, output,setOutput, loggedIn, setLoggedin,setFileBase64,filebase64,userInfo,setUserInfo,id,setID }}>
       <BrowserRouter>
         <Routes>
           <Route
