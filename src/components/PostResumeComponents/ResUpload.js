@@ -8,7 +8,7 @@ import NotLoggedInYet from "../NotLoggedInYet";
 
 const ResUpload = () => {
   const { setFileBase64, filebase64 } = useContext(data);
-  const { loggedIn, user, id , setID, input ,setInput , output,setOutput } = useContext(data);
+  const { loggedIn, user, words , setWords, input ,setInput , output,setOutput } = useContext(data);
   
  
  
@@ -32,6 +32,7 @@ const ResUpload = () => {
 
   const addRes = () => {
     //http://localhost:5050
+    // https://final-api-mam.web.app
     fetch("https://final-api-mam.web.app/addresume", {
       method: "POST",
       headers: {
@@ -40,7 +41,7 @@ const ResUpload = () => {
       body: JSON.stringify({ filebase64 }),
     })
       .then((res) => res.json())
-      .then(data=>setID(data))
+      .then(data=>setWords(data))
       .catch((err) => console.log(err));
     setFileBase64("");
   };
@@ -79,6 +80,7 @@ const ResUpload = () => {
   return (
 
     <>
+    {words &&console.log(words.text.replaceAll(' ', ''))}
     {input!==[]&&console.log(input)}
     {output!==[]&&console.log(output)}
       {!loggedIn ? (

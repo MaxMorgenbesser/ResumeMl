@@ -7,7 +7,7 @@ import Login from "./components/Login";
 import PostResume from "./components/PostResume";
 import Navbar from "./components/Navbar";
 import RateResume from "./components/RateResume";
-import TopFive from "./components/TopFive";
+import ResumeSearch from "./components/ResumeSearch";
 
 
 export const data = createContext();
@@ -16,13 +16,14 @@ function App() {
   const [loggedIn, setLoggedin] = useState(false);
   const [filebase64,setFileBase64] = useState("")
   const [userInfo,setUserInfo] = useState('')
+  const [words,setWords] = useState(null)
   const [id,setID] = useState('')
   const [output,setOutput]=useState([])
   const [input,setInput]=useState([])
 
 
   return (
-    <data.Provider value={{input,setInput, output,setOutput, loggedIn, setLoggedin,setFileBase64,filebase64,userInfo,setUserInfo,id,setID }}>
+    <data.Provider value={{input,setWords,words,setInput, output,setOutput, loggedIn, setLoggedin,setFileBase64,filebase64,userInfo,setUserInfo,id,setID }}>
       <BrowserRouter>
         <Routes>
           <Route
@@ -45,7 +46,7 @@ function App() {
             }
           />
           <Route path='score' element={<><Navbar/><RateResume/></>}/>
-          <Route path='topfive' element={<><Navbar/><TopFive/></>}/>
+          <Route path='topfive' element={<><Navbar/><ResumeSearch/></>}/>
         </Routes>
       </BrowserRouter>
     </data.Provider>
