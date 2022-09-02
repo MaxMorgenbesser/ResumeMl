@@ -2,7 +2,7 @@ import { Button, Form, Input } from "antd";
 import { useContext, useEffect, useState } from "react";
 import { data } from "../App";
 import NotLoggedInYet from "./NotLoggedInYet";
-import { Carousel } from "antd";
+// import { Carousel } from "antd";
 import ResumeSearchCarousel from "./ResumeSearchComponents/ResumeSearchCarousel";
 // import { data } from "../App"
 
@@ -11,7 +11,7 @@ const ResumeSearch = () => {
   let [resumes, setResumes] = useState();
   const [filebase64Array, setFileBase64Array] = useState([]);
   // const [resumeWords,setResumeWords]=useState([])
-  const [userQueryTitle, setUserQueryTitle] = useState();
+  //   const [userQueryTitle, setUserQueryTitle] = useState();
   const [userSkills, setUserSkills] = useState();
   const [submitted, setSubmitted] = useState(false);
   useEffect(() => {
