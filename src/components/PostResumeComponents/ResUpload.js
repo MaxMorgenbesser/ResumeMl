@@ -1,8 +1,9 @@
 // import pdf from "pdf-parse";
 // const pdf = require('pdf-parse');
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useEffect } from "react";
 import { data } from "../../App";
+import Brain from "../Brain";
 import NotLoggedInYet from "../NotLoggedInYet";
 
 
@@ -103,6 +104,7 @@ const ResUpload = () => {
           )}{" "}
         </>
       )}
+{input&&output&&<Brain input={input} output={output}/>}
     </>
   );
 };

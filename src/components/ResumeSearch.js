@@ -9,6 +9,7 @@ import ResumeSearchCarousel from "./ResumeSearchComponents/ResumeSearchCarousel"
 const ResumeSearch = () => {
   let { loggedIn } = useContext(data);
   let [resumes, setResumes] = useState();
+  let [level, setLevel] = useState();
   const [filebase64Array, setFileBase64Array] = useState([]);
   // const [resumeWords,setResumeWords]=useState([])
   //   const [userQueryTitle, setUserQueryTitle] = useState();
@@ -19,7 +20,7 @@ const ResumeSearch = () => {
       .then((res) => res.json())
       .then((data) => {
         setResumes(data);
-        console.log(data);
+       
       })
       .catch((err) => console.log(err));
   }, []);
@@ -30,10 +31,12 @@ const ResumeSearch = () => {
 
   const handleSubmit = () => {
     const newArr = resumes.filter((resume) => {
-      return resume.words.toUpperCase().includes(userSkills.toUpperCase());
+    
+      return resume.words.toUpperCase().includes(userSkills.toUpperCase()) ;
     });
-    setFileBase64Array(newArr);
+    setFileBase64Array( newArr );
   };
+
 
   return (
     <>
@@ -47,7 +50,18 @@ const ResumeSearch = () => {
               value={userSkills}
               onChange={(e) => setUserSkills(e.target.value)}
             ></Input>
-            {console.log(userSkills)}
+          </Form.Item>
+          <Form.Item>
+            <h3>Are you looking for a person that is Entry-Level, Mid-Level, or Senior?</h3>
+            <Button onClick={()=>setLevel('Entry-Level')}>
+              Entry-Level
+            </Button>
+            <Button onClick={()=>setLevel('Mid-Level')}>
+              Mid-Level
+            </Button>
+            <Button onClick={()=>setLevel('Senior')}>
+              Senior
+            </Button>
           </Form.Item>
           {resumes ? (
             <Button type="primary" htmlType="submit">

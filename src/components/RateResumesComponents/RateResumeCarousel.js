@@ -1,6 +1,10 @@
-import { Button, Carousel, Input,Space,Spin } from "antd";
+import { Button, Carousel, Input,Space,Spin,icons,Menu} from "antd";
 import { useContext, useEffect, useState } from "react";
 import { data } from "../../App";
+
+
+
+
 import "./RateResumeCss.css";
 
 const contentStyle = {
@@ -13,13 +17,14 @@ const contentStyle = {
 
 export default function RateResumeCarousel() {
   const [resumes, setResumes] = useState("");
+  const [level, setLevel] = useState();
   const [score, setScore] = useState(null);
   const {userInfo} = useContext(data)
   const onChange = (currentSlide) => {
     console.log(currentSlide);
   };
 
-  const updateRes = (id, userGrade,userInfo) => {
+  const updateRes = (id, userGrade,userInfo,level) => {
     console.log(id, userGrade,userInfo);
 
     fetch(`https://final-api-mam.web.app/${id}`, {
@@ -27,7 +32,7 @@ export default function RateResumeCarousel() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ score: userGrade, responses:1 }),
+      body: JSON.stringify({ score: userGrade, responses:1, [`${level}`]:1}),
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
@@ -44,14 +49,13 @@ export default function RateResumeCarousel() {
       .catch((err) => console.log(err));
   }, []);
 
-  function handleScoreButton(id, score,userInfo) {
-    updateRes(id, score,userInfo);
+  function handleScoreButton(id, score,userInfo,level) {
+    updateRes(id, score,userInfo,level);
     setScore("");
     console.log(id, score);
   }
   if (resumes) {
-    console.log(resumes)
-    console.log(userInfo)
+   
     return (
       <Carousel afterChange={onChange}>
         {resumes.map((resume) => {
@@ -65,9 +69,25 @@ export default function RateResumeCarousel() {
                 value={score}
                 onChange={(e) => setScore(e.target.value)}
               ></Input>
-              {score > 0 && score <= 100 && (
+              <h2>Is this person Entry-Level, Mid-Level or a Senior?</h2>
+              <Button onClick={()=>setLevel("Entry-Level")}>
+                Entry-Level
+              </Button>
+              <Button onClick={()=>setLevel("Mid-Level")}>
+                Mid-Level
+              </Button>
+              <Button onClick={()=>setLevel("Senior")}>
+                Senior
+              </Button>
+              <br/>
+              
+ 
+
+);
+              {score > 0 && score <= 100 && level&& (
+                
                 <Button
-                  onClick={() => handleScoreButton(resume._id, Number(score),userInfo)}
+                  onClick={() => handleScoreButton(resume._id, Number(score),userInfo,level)}
                 >
                   Submit
                 </Button>
