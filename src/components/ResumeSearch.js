@@ -32,7 +32,7 @@ const ResumeSearch = () => {
   const handleSubmit = () => {
     const newArr = resumes.filter((resume) => {
     
-      return resume.words.toUpperCase().includes(userSkills.toUpperCase()) ;
+      return resume.words.replaceAll(" ","").toUpperCase().includes(userSkills.replaceAll(" ", '').toUpperCase()) ;
     });
     setFileBase64Array( newArr );
   };
@@ -63,7 +63,7 @@ const ResumeSearch = () => {
               Senior
             </Button>
           </Form.Item>
-          {resumes ? (
+          {resumes && level? (
             <Button type="primary" htmlType="submit">
               Search for resumes!
             </Button>
@@ -72,7 +72,7 @@ const ResumeSearch = () => {
           )}
         </Form>
       )}
-      {submitted && <ResumeSearchCarousel filebase64Array={filebase64Array} />}
+      {submitted && <ResumeSearchCarousel filebase64Array={filebase64Array} level={level}/>}
     </>
   );
 };
