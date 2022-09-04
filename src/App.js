@@ -8,6 +8,7 @@ import PostResume from "./components/PostResume";
 import Navbar from "./components/Navbar";
 import RateResume from "./components/RateResume";
 import ResumeSearch from "./components/ResumeSearch";
+import Footer from "./components/Footer";
 
 
 export const data = createContext();
@@ -31,10 +32,12 @@ function App() {
             element={
               <>
                 <About />
-                <Login />
+              
               </>
             }
           />
+          {loggedIn&&
+          <>
           <Route
             path="post"
             element={
@@ -42,11 +45,14 @@ function App() {
                 <Navbar />
                 <br />
                 <PostResume />
+                <Footer/>
               </>
             }
           />
-          <Route path='score' element={<><Navbar/><RateResume/></>}/>
-          <Route path='topfive' element={<><Navbar/><ResumeSearch/></>}/>
+          <Route path='score' element={<><Navbar/><RateResume/><Footer/></>}/>
+          <Route path='research' element={<><Navbar/><ResumeSearch/><Footer/></>}/>
+          </>
+}
         </Routes>
       </BrowserRouter>
     </data.Provider>

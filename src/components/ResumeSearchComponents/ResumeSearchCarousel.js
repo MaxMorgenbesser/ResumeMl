@@ -1,11 +1,30 @@
 import { List } from "antd";
 import "../../../src/App.css";
 export default function ResumeSearchCarousel({ filebase64Array, level }) {
+
+  function shuffle(filebase64Array) {
+    let currentIndex = filebase64Array.length,  randomIndex;
+    // While there remain elements to shuffle.
+    while (currentIndex !== 0) {
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      // And swap it with the current element.
+      [filebase64Array[currentIndex], filebase64Array[randomIndex]] = [
+        filebase64Array[randomIndex],filebase64Array[currentIndex]];
+    }
+
+    return filebase64Array;
+  }
+
+ let base64=shuffle(filebase64Array)
+
   return (
+
     <div id="resume-list">
       <List>
-        {filebase64Array.map((base) => (
-          <List.Item key={base._id}>
+        {base64&&base64.map((base) => (
+          <List.Item key={base._id} className="resume-container">
             {level === "Entry-Level" && base["Entry-Level"] && (
               <h2>
                 {base["Entry-Level"]} person/s think this person is {level}

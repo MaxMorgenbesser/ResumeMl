@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^4.22.8",
     "bootstrap": "^5.2.0",
+    "brain.js": "^2.0.0-beta.15",
     "firebase": "^9.9.3",
     "pdf-parse": "^1.1.1",
     "react": "^18.2.0",

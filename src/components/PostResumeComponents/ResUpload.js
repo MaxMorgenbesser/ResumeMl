@@ -1,9 +1,8 @@
-// import pdf from "pdf-parse";
-// const pdf = require('pdf-parse');
+
 import { useContext } from "react";
 import { useEffect } from "react";
 import { data } from "../../App";
-import Brain from "../Brain";
+// import Brain from "../Brain";
 import NotLoggedInYet from "../NotLoggedInYet";
 
 
@@ -82,8 +81,6 @@ const ResUpload = () => {
 
     <>
     {words &&console.log(words.text.replaceAll(' ', ''))}
-    {input!==[]&&console.log(input)}
-    {output!==[]&&console.log(output)}
       {!loggedIn ? (
         <NotLoggedInYet />
       ) : (
@@ -100,11 +97,15 @@ const ResUpload = () => {
             {filebase64 && <button onClick={addRes}>Submit</button>}
           </form>
           {filebase64.indexOf("application/pdf") > -1 && (
-            <embed src={filebase64} width="800px" height="2100px" />
+            <embed src={filebase64} width="800px" height="700px" />
           )}{" "}
         </>
+        
       )}
-{input&&output&&<Brain input={input} output={output}/>}
+      {input&&console.log(input)}
+        {output&&console.log(output)}
+{/* {input&&output&&words&&<Brain input={input} output={output} words={words}/>} */}
+
     </>
   );
 };

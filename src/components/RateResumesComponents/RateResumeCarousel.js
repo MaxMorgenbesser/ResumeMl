@@ -63,6 +63,7 @@ export default function RateResumeCarousel() {
             <div key={resume._id}>
               <h3>Score the resume between 1 and 100</h3>
               <Input
+                required
                 max="100"
                 min="-1"
                 type="number"

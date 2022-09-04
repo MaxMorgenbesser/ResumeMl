@@ -51,7 +51,9 @@ const ResumeSearch = () => {
               onChange={(e) => setUserSkills(e.target.value)}
             ></Input>
           </Form.Item>
-          <Form.Item>
+          <Form.Item 
+          
+          >
             <h3>Are you looking for a person that is Entry-Level, Mid-Level, or Senior?</h3>
             <Button onClick={()=>setLevel('Entry-Level')}>
               Entry-Level
