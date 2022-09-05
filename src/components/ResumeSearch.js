@@ -14,6 +14,7 @@ const ResumeSearch = () => {
   // const [resumeWords,setResumeWords]=useState([])
   //   const [userQueryTitle, setUserQueryTitle] = useState();
   const [userSkills, setUserSkills] = useState();
+  const [searchTerms, setSearchTerms] = useState();
   const [submitted, setSubmitted] = useState(false);
   useEffect(() => {
     fetch("https://final-api-mam.web.app/getresumes")
@@ -29,23 +30,33 @@ const ResumeSearch = () => {
     setSubmitted(true);
   }, [filebase64Array]);
 
+  // useEffect(() => {
+  //   setUserSkills(searchTerms);
+  // }, []);
+
+
   const handleSubmit = () => {
+    // setUserSkills(searchTerms)
+
     const newArr = resumes.filter((resume) => {
     
       return resume.words.replaceAll(" ","").toUpperCase().includes(userSkills.replaceAll(" ", '').toUpperCase()) ;
     });
     setFileBase64Array( newArr );
+    
   };
 
 
   return (
     <>
-      {!loggedIn ? (
-        <NotLoggedInYet />
+      {submitted ? (
+        <></>
       ) : (
-        <Form onFinish={handleSubmit}>
+       
+        
+        <Form onFinish={()=>handleSubmit()}>
           <Form.Item>
-            <Input
+            <Input 
               type="text"
               value={userSkills}
               onChange={(e) => setUserSkills(e.target.value)}
@@ -65,7 +76,7 @@ const ResumeSearch = () => {
               Senior
             </Button>
           </Form.Item>
-          {resumes && level? (
+          {resumes? (
             <Button type="primary" htmlType="submit">
               Search for resumes!
             </Button>
@@ -74,7 +85,7 @@ const ResumeSearch = () => {
           )}
         </Form>
       )}
-      {submitted && <ResumeSearchCarousel filebase64Array={filebase64Array} level={level}/>}
+      {submitted && filebase64Array && <ResumeSearchCarousel filebase64Array={filebase64Array} setSubmitted={setSubmitted} level={level} setFileBase64Array={setFileBase64Array}/>}
     </>
   );
 };

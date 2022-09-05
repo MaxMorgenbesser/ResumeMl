@@ -45,16 +45,17 @@ function App() {
                 <Navbar />
                 <br />
                 <PostResume />
-                <Footer/>
+    
               </>
             }
           />
-          <Route path='score' element={<><Navbar/><RateResume/><Footer/></>}/>
-          <Route path='research' element={<><Navbar/><ResumeSearch/><Footer/></>}/>
+          <Route path='score' element={<><Navbar/><RateResume/></>}/>
+          <Route path='research' element={<><Navbar/><ResumeSearch/></>}/>
           </>
 }
         </Routes>
       </BrowserRouter>
+      <Footer/>
     </data.Provider>
   );
 }

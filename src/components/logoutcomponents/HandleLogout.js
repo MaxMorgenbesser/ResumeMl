@@ -1,5 +1,5 @@
-import  Nav from "react-bootstrap/Nav"
-import Button from "react-bootstrap/Button"
+// import  Nav from "react-bootstrap/Nav"
+import{ Button }from "antd"
 import { Link } from 'react-router-dom';
 
 export default function HandleLogout(){
