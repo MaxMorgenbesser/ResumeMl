@@ -1,9 +1,12 @@
 import ResUpload from "./PostResumeComponents/ResUpload"
 
+
 const PostResume=()=>{
-    return (<>Post resume page
-    <br/>
+    return (<>
+    
+    <div className="resume--post-container">
     <ResUpload/>
+    </div>
     </>)
 }
 

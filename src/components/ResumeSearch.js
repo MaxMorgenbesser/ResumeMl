@@ -1,6 +1,8 @@
 import { Button, Form, Input } from "antd";
 import { useContext, useEffect, useState } from "react";
 import { data } from "../App";
+import Navbar from "./Navbar";
+
 import NotLoggedInYet from "./NotLoggedInYet";
 // import { Carousel } from "antd";
 import ResumeSearchCarousel from "./ResumeSearchComponents/ResumeSearchCarousel";
@@ -26,9 +28,9 @@ const ResumeSearch = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  useEffect(() => {
-    setSubmitted(true);
-  }, [filebase64Array]);
+  // useEffect(() => {
+  //   setSubmitted(true);
+  // }, [filebase64Array]);
 
   // useEffect(() => {
   //   setUserSkills(searchTerms);
@@ -43,7 +45,7 @@ const ResumeSearch = () => {
       return resume.words.replaceAll(" ","").toUpperCase().includes(userSkills.replaceAll(" ", '').toUpperCase()) ;
     });
     setFileBase64Array( newArr );
-    
+    setSubmitted(true)
   };
 
 
@@ -85,7 +87,7 @@ const ResumeSearch = () => {
           )}
         </Form>
       )}
-      {submitted && filebase64Array && <ResumeSearchCarousel filebase64Array={filebase64Array} setSubmitted={setSubmitted} level={level} setFileBase64Array={setFileBase64Array}/>}
+      {submitted && filebase64Array && <ResumeSearchCarousel filebase64Array={filebase64Array} setSubmitted={setSubmitted} level={level}  submitted={submitted} setFileBase64Array={setFileBase64Array}/>}
     </>
   );
 };

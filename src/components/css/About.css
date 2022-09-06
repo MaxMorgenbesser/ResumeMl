@@ -1,5 +1,10 @@
-#Logo{
-  background-color: black;  
-  
+#logo{
+   border: 10px;
+   border-color: black;
 }
 
+#About{
+  width: 100%;
+  background-color: rgb(245, 220, 243);
+  display: flex; 
+}

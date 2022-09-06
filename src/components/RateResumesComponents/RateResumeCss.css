@@ -1,8 +1,19 @@
-.slick-dots li button {
+/* .slick-dots li button {
     width: 6px;
-    height: 6px;
+    height: 900px;
     border-radius: 100%;
-    background-color: black;
+    background-color: rgb(248, 1, 1);
+  } */
+
+  
+  #levelbuttons-container{
+  margin: 10px;
+  
   }
+.levelbutton{
+  margin: 5px;
+  
+}
+  
 
   

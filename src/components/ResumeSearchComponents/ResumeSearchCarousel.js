@@ -4,7 +4,8 @@ import "../../../src/App.css";
 export default function ResumeSearchCarousel({
   filebase64Array,
   level,
-  setSubmitted
+  setSubmitted,
+  submitted
 
 }) {
   function shuffle(filebase64Array) {
@@ -29,7 +30,7 @@ export default function ResumeSearchCarousel({
 
   return (
     <div id="resume-list">
-    <Button onClick={()=>setSubmitted(false)}>Search again</Button>
+    {submitted&&<Button onClick={()=>setSubmitted(false)}>Search again</Button>}
       <List>
         {base64 &&
           filebase64Array &&

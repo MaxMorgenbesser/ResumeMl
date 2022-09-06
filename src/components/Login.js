@@ -6,7 +6,7 @@ import { data } from "../App";
 import { Link } from "react-router-dom";
 
 const LoginButton = () => {
-  const { loggedIn, setLoggedin } = useContext(data);
+  const { loggedIn, setLoggedin,userInfo } = useContext(data);
 
   const [visible, setVisible] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
@@ -32,9 +32,9 @@ const LoginButton = () => {
 
   return (
     <>
-      {!loggedIn && <Button onClick={showModal}>Login!</Button>}
+      {!userInfo && <Button onClick={showModal}>Login!</Button>}
 
-      {!loggedIn && (
+      {!userInfo && (
         <Modal
           title="Title"
           visible={visible}
@@ -47,7 +47,7 @@ const LoginButton = () => {
           </>
         </Modal>
       )}
-      {showModal && loggedIn ? (
+      {showModal && userInfo ? (
         <Link as={Link} to="/Post">
           <Button>Lets go!</Button>
         </Link>

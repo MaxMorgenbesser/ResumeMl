@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { initializeApp } from "firebase/app";
+import { useNavigate } from "react-router-dom";
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -8,16 +9,19 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { firebaseConfig } from "./FirebaseConfig";
-import { app } from "./FirebaseConfig";
+// import { app } from "./FirebaseConfig";
 
 // const app = initializeApp(firebaseConfig);
 
 import { data } from "../../App";
 
+
 const LoginForm = () => {
-  const {  setLoggedin, setUserInfo } = useContext(data);
+  const navigate = useNavigate()
+  const {  setLoggedin, setUserInfo, userInfo } = useContext(data);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
 
   const connectAuth = () => {
     const app = initializeApp(firebaseConfig);
@@ -31,9 +35,10 @@ const LoginForm = () => {
       alert(err)
     );
     if (user) {
-      console.log(user.user);
       setLoggedin(true);
       setUserInfo(user.user.uid);
+      localStorage.setItem('userId', user.user.uid)
+      navigate('/post')
     }
   };
 
@@ -43,10 +48,11 @@ const LoginForm = () => {
       (err) => alert(err)
     );
     if (user) {
-      console.log(user.user);
       setLoggedin(true);
+      setUserInfo(user.user.uid);
+      localStorage.setItem('userId', user.user.uid)
+      navigate('/post')
     }
-    setUserInfo(user.user.uid);
   };
 
   const handleSignUp = async () => {
@@ -64,6 +70,8 @@ const LoginForm = () => {
     if (user) console.log(user.user);
     setLoggedin(true);
     setUserInfo(user.user.uid);
+    localStorage.setItem('userId', JSON.stringify(userInfo))
+    navigate('/post')
   };
 
   return (
