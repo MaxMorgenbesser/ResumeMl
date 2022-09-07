@@ -15,7 +15,7 @@ export default function RateResumeCarousel() {
   const [resumes, setResumes] = useState("");
   const [level, setLevel] = useState();
   const [score, setScore] = useState(null);
-  const { userInfo } = useContext(data);
+  const { userInfo,token } = useContext(data);
   const onChange = (currentSlide) => {
     console.log(currentSlide);
   };
@@ -26,6 +26,7 @@ export default function RateResumeCarousel() {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": token
       },
       body: JSON.stringify({ score: userGrade, responses: 1, [`${level}`]: 1 }),
     })
@@ -35,7 +36,11 @@ export default function RateResumeCarousel() {
   };
 
   useEffect(() => {
-    fetch("https://final-api-mam.web.app/getresumes")
+    fetch(" https://final-api-mam.web.app/getresumes",{
+      headers:{
+        "Authorization": token
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
         setResumes(data);

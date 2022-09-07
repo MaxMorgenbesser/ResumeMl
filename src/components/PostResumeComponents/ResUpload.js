@@ -17,10 +17,14 @@ const ResUpload = () => {
     setInput,
     output,
     setOutput,
+    token
   } = useContext(data);
 
   useEffect(() => {
-    fetch("https://final-api-mam.web.app/getresumes")
+    fetch(" https://final-api-mam.web.app/getresumes", {
+    headers : {
+      "Authorization": token
+   } })
       .then((res) => res.json())
       .then((resumes) => {
         resumes.map((resume) => {
@@ -40,6 +44,7 @@ const ResUpload = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": token
       },
       body: JSON.stringify({ filebase64 }),
     })

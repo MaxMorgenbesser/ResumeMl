@@ -19,9 +19,10 @@ import '../css/logincss.css'
 
 const LoginForm = () => {
   const navigate = useNavigate()
-  const {  setLoggedin, setUserInfo, userInfo } = useContext(data);
+  const {  setLoggedin, setUserInfo, userInfo,setToken } = useContext(data);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+ 
 
 
   const connectAuth = () => {
@@ -39,6 +40,9 @@ const LoginForm = () => {
       setLoggedin(true);
       setUserInfo(user.user.uid);
       localStorage.setItem('userId', user.user.uid)
+      localStorage.setItem('accessToken', user.user.accessToken)
+      setToken(user.user.accessToken)
+      console.log(user.user.accessToken)
       navigate('/')
     }
   };
@@ -52,6 +56,8 @@ const LoginForm = () => {
       setLoggedin(true);
       setUserInfo(user.user.uid);
       localStorage.setItem('userId', user.user.uid)
+      localStorage.setItem('accessToken', user.user.accessToken)
+      console.log(user.user.accessToken)
       navigate('/')
     }
   };
@@ -72,6 +78,8 @@ const LoginForm = () => {
     setLoggedin(true);
     setUserInfo(user.user.uid);
     localStorage.setItem('userId', JSON.stringify(userInfo))
+    localStorage.setItem('accessToken', user.user.accessToken)
+    console.log(user.user.accessToken)
     navigate('/')
   };
 

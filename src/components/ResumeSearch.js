@@ -8,7 +8,7 @@ import ResumeSearchCarousel from "./ResumeSearchComponents/ResumeSearchCarousel"
 // import { data } from "../App"
 
 const ResumeSearch = () => {
-  let { loggedIn } = useContext(data);
+  let { token } = useContext(data);
   let [resumes, setResumes] = useState();
   let [level, setLevel] = useState();
   const [filebase64Array, setFileBase64Array] = useState([]);
@@ -18,7 +18,10 @@ const ResumeSearch = () => {
   const [searchTerms, setSearchTerms] = useState();
   const [submitted, setSubmitted] = useState(false);
   useEffect(() => {
-    fetch("https://final-api-mam.web.app/getresumes")
+    fetch("https://final-api-mam.web.app/getresumes",{
+    headers : {
+      "Authorization": token
+   } })
       .then((res) => res.json())
       .then((data) => {
         setResumes(data);

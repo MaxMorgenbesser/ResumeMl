@@ -4,14 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { data } from "../../App";
 import { useContext } from "react";
 
-
 export default function HandleLogout() {
-const {setUserInfo} = useContext(data)
+  const { setUserInfo } = useContext(data);
   const navigation = useNavigate();
   const logout = async () => {
     localStorage.clear();
-    setUserInfo('')
-   navigation("/");
+    setUserInfo("");
+    navigation("/");
   };
 
   return (

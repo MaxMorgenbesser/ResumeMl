@@ -18,6 +18,7 @@ function App() {
   const [userInfo, setUserInfo] = useState(
     "" || localStorage.getItem("userId")
   );
+  const [token,setToken]=useState(localStorage.getItem("accessToken"))
   const [words, setWords] = useState(null);
   const [id, setID] = useState("");
   const [output, setOutput] = useState([]);
@@ -30,6 +31,8 @@ function App() {
   return (
     <data.Provider
       value={{
+        token,
+        setToken,
         input,
         setWords,
         words,
