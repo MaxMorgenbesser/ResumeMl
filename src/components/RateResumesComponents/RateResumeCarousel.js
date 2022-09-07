@@ -1,12 +1,11 @@
 import { Button, Carousel, Input, Space, Spin, icons, Menu } from "antd";
 import { useContext, useEffect, useState } from "react";
 import { data } from "../../App";
-// import "../../App.css";
+import '../RateResumesComponents/RateResumeCss.css'
 
-// import "./RateResumeCss.css";
 
 const contentStyle = {
-  height: "1150px",
+  height: "800px",
   lineHeight: "160px",
   color: "blue",
   textAlign: "center",
@@ -22,8 +21,7 @@ export default function RateResumeCarousel() {
   };
 
   const updateRes = (id, userGrade, userInfo, level) => {
-    console.log(id, userGrade, userInfo);
-
+   
     fetch(`https://final-api-mam.web.app/${id}`, {
       method: "PUT",
       headers: {
@@ -41,7 +39,7 @@ export default function RateResumeCarousel() {
       .then((res) => res.json())
       .then((data) => {
         setResumes(data);
-        console.log(data);
+        
       })
       .catch((err) => console.log(err));
   }, []);
@@ -49,17 +47,18 @@ export default function RateResumeCarousel() {
   function handleScoreButton(id, score, userInfo, level) {
     updateRes(id, score, userInfo, level);
     setScore("");
-    console.log(id, score);
+    
   }
   if (resumes) {
     return (
+      <div className="carousel-container">
       <Carousel afterChange={onChange} className="resume--post-container">
         {resumes.map((resume) => {
           return (
             <div key={resume._id}>
               <h3>Score the resume between 1 and 100</h3>
               <Input
-                className="ScoreInput"
+               id="ScoreInput"
                 required
                 max={100}
                 min="-1"
@@ -113,16 +112,18 @@ export default function RateResumeCarousel() {
                 <br/>
                 </>
               )}
+              <div className="resume-container">
               <embed
                 src={resume.newRes.filebase64}
-                width="1200px"
-                height="200px"
+               
                 style={contentStyle}
               />
+              </div>
             </div>
           );
         })}
       </Carousel>
+      </div>
     );
   } else {
     return (

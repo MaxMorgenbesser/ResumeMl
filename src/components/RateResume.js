@@ -8,8 +8,8 @@ const {loggedIn} = useContext(data)
 
     
 return (<>
-{!loggedIn?<NotLoggedInYet/>:
-<RateResumeCarousel/>}</>)
+
+<RateResumeCarousel/></>)
 }
 
 export default RateResume

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useEffect } from "react";
 import { data } from "../../App";
 import { Button,Input } from "antd";
-
+import Brain from "../Brain";
 import "../../App.css";
 
 

@@ -1,14 +1,11 @@
 
 
 #footer{
-position: static;
- bottom: 0;
- height: 20vh;
+text-align: center;
+margin-top: 50px;
+padding-bottom: 10px;
+height: auto;
  background-color:rgb(251, 251, 217);
  width: 100%;
- margin-top: 0;
- text-align: center;
- max-height: 25vh;
- overflow: hidden;
 }
 

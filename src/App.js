@@ -59,7 +59,7 @@ function App() {
           {userInfo && (
             <>
               <Route
-                path="post"
+                path="postres"
                 element={
                   <>
                     <Navbar />

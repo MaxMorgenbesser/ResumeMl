@@ -47,13 +47,10 @@ const LoginButton = () => {
           </>
         </Modal>
       )}
-      {showModal && userInfo ? (
-        <Link as={Link} to="/Post">
-          <Button>Lets go!</Button>
-        </Link>
-      ) : (
+    
+      
         <></>
-      )}
+      
     </>
   );
 };

@@ -38,7 +38,7 @@ const LoginForm = () => {
       setLoggedin(true);
       setUserInfo(user.user.uid);
       localStorage.setItem('userId', user.user.uid)
-      navigate('/post')
+      navigate('/postres')
     }
   };
 
@@ -51,7 +51,7 @@ const LoginForm = () => {
       setLoggedin(true);
       setUserInfo(user.user.uid);
       localStorage.setItem('userId', user.user.uid)
-      navigate('/post')
+      navigate('/postres')
     }
   };
 
@@ -71,7 +71,7 @@ const LoginForm = () => {
     setLoggedin(true);
     setUserInfo(user.user.uid);
     localStorage.setItem('userId', JSON.stringify(userInfo))
-    navigate('/post')
+    navigate('/postres')
   };
 
   return (
