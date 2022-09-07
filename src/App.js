@@ -48,6 +48,7 @@ function App() {
     >
       <BrowserRouter>
         <Routes>
+          {!userInfo&& 
           <Route
             index
             element={
@@ -56,10 +57,11 @@ function App() {
               </>
             }
           />
+}
           {userInfo && (
             <>
               <Route
-                path="postres"
+                index
                 element={
                   <>
                     <Navbar />

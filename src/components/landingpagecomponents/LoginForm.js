@@ -38,7 +38,7 @@ const LoginForm = () => {
       setLoggedin(true);
       setUserInfo(user.user.uid);
       localStorage.setItem('userId', user.user.uid)
-      navigate('/postres')
+      navigate('/')
     }
   };
 

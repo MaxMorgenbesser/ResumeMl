@@ -15,7 +15,7 @@ const Navbar = () => {
         </Nav.Item>
      <div className="guide">
         <Nav.Item>
-          <Link as={Link} to="/postres">
+          <Link as={Link} to="/">
             <Button type="Primary">Enter your resume</Button>
           </Link>
         </Nav.Item>
