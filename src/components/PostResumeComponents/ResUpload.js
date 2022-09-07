@@ -73,10 +73,7 @@ const ResUpload = () => {
   }
 
   return (
-    <>
-  
-       
-        <>
+       <>
           <br />
           <form onSubmit={formSubmit}>
             {console.log(user)}
@@ -99,10 +96,10 @@ const ResUpload = () => {
           )}{" "}
         </>
       
-      {input && console.log(input)}
-      {output && console.log(output)}
-      {/* {input&&output&&words&&<Brain input={input} output={output} words={words}/>} */}
-    </>
+      /* {input && console.log(input)}
+      {output && console.log(output)} */
+      /* {input&&output&&words&&<Brain input={input} output={output} words={words}/>} */
+  
   );
 };
 
