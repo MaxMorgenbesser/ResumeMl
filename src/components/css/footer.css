@@ -1,11 +1,11 @@
 
 
 #footer{
-text-align: center;
-padding-bottom: 10px;
-height: 175px;
- background-color:rgb(251, 251, 217);
- width: 100%;
- overflow: hidden;
+    text-align: center;
+    padding-bottom: 10px;
+    height: 175px;
+    background-color:rgb(251, 251, 217);
+    width: 100%;
+    overflow: hidden;
 }
 

@@ -14,6 +14,7 @@ import { firebaseConfig } from "./FirebaseConfig";
 // const app = initializeApp(firebaseConfig);
 
 import { data } from "../../App";
+import '../css/logincss.css'
 
 
 const LoginForm = () => {
@@ -51,7 +52,7 @@ const LoginForm = () => {
       setLoggedin(true);
       setUserInfo(user.user.uid);
       localStorage.setItem('userId', user.user.uid)
-      navigate('/postres')
+      navigate('/')
     }
   };
 
@@ -71,11 +72,13 @@ const LoginForm = () => {
     setLoggedin(true);
     setUserInfo(user.user.uid);
     localStorage.setItem('userId', JSON.stringify(userInfo))
-    navigate('/postres')
+    navigate('/')
   };
 
   return (
+    <div id="wholelogin">
     <form onSubmit={(e) => e.preventDefault()}>
+      <div id="loginforminputs">
       <label htmlFor="email">
         Email:
         <input
@@ -83,10 +86,11 @@ const LoginForm = () => {
           onChange={(e) => setEmail(e.target.value)}
           name="email"
           type="email"
-          placeholder="you@there.com"
+          placeholder="email"
         />
       </label>
       <br />
+      
       <label htmlFor="password">
         Password:
         <input
@@ -96,13 +100,18 @@ const LoginForm = () => {
           type="password"
           placeholder="password"
         />
+        
       </label>
+      </div>
       <br />
-      <button onClick={handleLogin}>Login</button>&nbsp;
-      <button onClick={handleSignUp}>Sign Up</button>
-      <br />
-      <button onClick={handleGoogleLogin}>Sign in with google</button>
+      <div id="loginbuttons">
+      <button className="buttonlogin" onClick={handleLogin}>Login</button>
+      <button className="buttonlogin" onClick={handleSignUp}>Sign Up</button>
+      
+      <button className="buttonlogin" onClick={handleGoogleLogin}>Sign in with google</button>
+      </div>
     </form>
+    </div>
   );
 };
 

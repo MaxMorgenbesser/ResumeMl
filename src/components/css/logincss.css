@@ -1,0 +1,28 @@
+
+#loginforminputs{
+    border: 5px solid aqua;
+}
+
+#loginbuttons{
+    border: 5px solid rgb(240, 6, 6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    
+}
+
+.buttonlogin{
+height: 45px;
+border-radius: 15px;
+background-color: rgb(154, 238, 238);
+}
+
+#wholelogin{
+    border:5px solid orange ;
+}
+
+.loginmodal{
+    
+    border:5px solid rgb(0, 255, 8) ;
+}

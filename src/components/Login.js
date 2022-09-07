@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import LoginForm from "./landingpagecomponents/LoginForm";
 import { useContext } from "react";
 import { data } from "../App";
-import { Link } from "react-router-dom";
+
+import '../components/css/logincss.css'
 
 const LoginButton = () => {
   const { loggedIn, setLoggedin,userInfo } = useContext(data);
@@ -36,11 +37,14 @@ const LoginButton = () => {
 
       {!userInfo && (
         <Modal
-          title="Title"
+          className="loginmodal"
+          title="Login!"
           visible={visible}
           onOk={handleOk}
           confirmLoading={confirmLoading}
           onCancel={handleCancel}
+          footer={null}
+          
         >
           <>
             <LoginForm />
