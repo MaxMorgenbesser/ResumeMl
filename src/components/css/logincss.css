@@ -1,28 +1,40 @@
 
-#loginforminputs{
-    border: 5px solid aqua;
-}
+
 
 #loginbuttons{
-    border: 5px solid rgb(240, 6, 6);
+
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
-    
+  
+ 
+   
 }
 
 .buttonlogin{
 height: 45px;
+width: 40%;
+display: flex;
+align-items: center;
+justify-content: center;
 border-radius: 15px;
-background-color: rgb(154, 238, 238);
+background-color: rgb(154, 231, 238);
+margin: 5px;
+color: gray;
 }
 
-#wholelogin{
-    border:5px solid orange ;
-}
 
-.loginmodal{
+
+
+
+#email-input{
+    display: flex;
+    justify-content: space-evenly;
     
-    border:5px solid rgb(0, 255, 8) ;
+}
+
+
+
+#pass-input{
+    display: flex;
+    justify-content: space-evenly;
+    
 }

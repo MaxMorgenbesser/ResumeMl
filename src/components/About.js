@@ -3,19 +3,40 @@ import LoginButton from "./Login";
 import logo from "./aboutLogo.png";
 import "../components/css/About.css";
 import React from "react";
+import AboutHeader from "./AboutHeader";
 
 const About = () => {
   return (
-    <React.Fragment>
+    <>
+      <AboutHeader />
       <div id="About">
         <br />
-        <LoginButton />
+
         <div id="ab-right">
+          <div id="hero"> 
+            <div>
+              <h2>Welcome to Resu-mii!</h2>
+              <br />
+            </div>
+            <div>
+              <h3>
+                Our mission is to make finding the right candidate as easy as
+                picking out the right experience!
+              </h3>
+              <br />
+            </div>
+            <br />
+            <div id="loginbutton">
+              <LoginButton />
+            </div>
+          </div>
+
+          <h3></h3>
           <div id="line"></div>
           <img src={logo} id="logo" />
         </div>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 

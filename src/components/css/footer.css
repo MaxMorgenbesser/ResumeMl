@@ -4,8 +4,13 @@
     text-align: center;
     padding-bottom: 10px;
     height: 175px;
-    background-color:rgb(251, 251, 217);
+    background-color:#9bced1 ;
     width: 100%;
     overflow: hidden;
+    
 }
 
+#footer-text{
+    color: white;
+
+}

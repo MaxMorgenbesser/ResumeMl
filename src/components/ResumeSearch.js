@@ -90,15 +90,17 @@ const ResumeSearch = () => {
             </Button>
             </div>
           </Form.Item>
+          <div className="submitButtonContainer">
           {resumes? (
-            <div className="submitButtonContainer">
+            
             <Button type="primary" htmlType="submit" id="searchbutton">
               Search for resumes!
             </Button>
-            </div>
+           
           ) : (
             <h3>Please wait</h3>
           )}
+           </div>
         </Form>
       )}
       {submitted && filebase64Array && <ResumeSearchCarousel filebase64Array={filebase64Array} setSubmitted={setSubmitted} level={level}  submitted={submitted} setFileBase64Array={setFileBase64Array}/>}

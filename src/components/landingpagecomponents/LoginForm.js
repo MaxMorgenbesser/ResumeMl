@@ -42,7 +42,7 @@ const LoginForm = () => {
       localStorage.setItem('userId', user.user.uid)
       localStorage.setItem('accessToken', user.user.accessToken)
       setToken(user.user.accessToken)
-      console.log(user.user.accessToken)
+      // console.log(user.user.accessToken)
       navigate('/')
     }
   };
@@ -57,7 +57,7 @@ const LoginForm = () => {
       setUserInfo(user.user.uid);
       localStorage.setItem('userId', user.user.uid)
       localStorage.setItem('accessToken', user.user.accessToken)
-      console.log(user.user.accessToken)
+      // console.log(user.user.accessToken)
       navigate('/')
     }
   };
@@ -72,14 +72,14 @@ const LoginForm = () => {
       auth,
       email,
       password
-    ).catch((err) => alert(err.message));
+    ).catch((err) => console.log(err.message));
     //if all okay
     if (user) console.log(user.user);
     setLoggedin(true);
     setUserInfo(user.user.uid);
     localStorage.setItem('userId', JSON.stringify(userInfo))
     localStorage.setItem('accessToken', user.user.accessToken)
-    console.log(user.user.accessToken)
+    // console.log(user.user.accessToken)
     navigate('/')
   };
 
@@ -88,6 +88,7 @@ const LoginForm = () => {
     <form onSubmit={(e) => e.preventDefault()}>
       <div id="loginforminputs">
       <label htmlFor="email">
+        <div id="email-input">
         Email:
         <input
           value={email}
@@ -96,10 +97,13 @@ const LoginForm = () => {
           type="email"
           placeholder="email"
         />
+        </div>
+ 
       </label>
       <br />
-      
+     
       <label htmlFor="password">
+      <div id="pass-input">
         Password:
         <input
           value={password}
@@ -108,7 +112,7 @@ const LoginForm = () => {
           type="password"
           placeholder="password"
         />
-        
+        </div>
       </label>
       </div>
       <br />

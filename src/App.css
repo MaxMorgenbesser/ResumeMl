@@ -21,13 +21,14 @@ width:  400px;
 .resume-container{
   display: flex;
   flex-direction: column;
+ 
 }
 .resume--post-container{
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  background-color: thistle;
+  background-color: lightcyan;
   height: 855px;
 }
 
