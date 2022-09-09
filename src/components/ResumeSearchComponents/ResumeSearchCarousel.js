@@ -57,11 +57,13 @@ export default function ResumeSearchCarousel({
               ) : (
                 <></>
               )}
+            
               <embed
                 src={base.newRes.filebase64}
-                width="800px"
-                height="900px"
+                width="1200px"
+                height="1600px"
               />
+            
             </List.Item>
           ))}
       </List>

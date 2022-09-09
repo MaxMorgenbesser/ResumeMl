@@ -6,23 +6,32 @@
   } */
   .ant-carousel .slick-dots li button {
     background: blue;
-  
+    top:10%;
     opacity: 1;
-    height: 1000px;
+    height: 15px;
 }
   
 .carousel-container{
-  border: 90px solid black;
-  overflow: hidden;
-  height: 1200px;
+  height: 800px;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   width: 100%;
 }
 
   
 
 .resume-container{
-height: 600px;
+height: 500px;
+display: flex;
 
+width: 400px;
+
+
+}
+
+#update-stuff{
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

@@ -1,4 +1,3 @@
-import Footer from "./Footer";
 import LoginButton from "./Login";
 import logo from "./aboutLogo.png";
 import "../components/css/About.css";
@@ -13,7 +12,7 @@ const About = () => {
         <br />
 
         <div id="ab-right">
-          <div id="hero"> 
+          <div id="hero">
             <div>
               <h2>Welcome to Resu-mii!</h2>
               <br />
@@ -31,9 +30,8 @@ const About = () => {
             </div>
           </div>
 
-          <h3></h3>
           <div id="line"></div>
-          <img src={logo} id="logo" />
+          <img src={logo} id="logo" alt="logo" />
         </div>
       </div>
     </>

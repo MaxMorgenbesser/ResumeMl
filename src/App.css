@@ -1,7 +1,9 @@
 @import 'antd/dist/antd.css';
 
 
-
+#body-wrapper{
+  height: 100vh;
+}
 #resume-list {
   height: 100%;
   overflow-x: hide;
@@ -29,12 +31,13 @@ width:  400px;
   align-items: center;
   width: 100%;
   background-color: lightcyan;
-  height: 855px;
+  height: 800px;
 }
 
 #ScoreInput{
   width: 20%;
-  margin-left:30%;
+  
   box-shadow: 90px;
 
 }
+

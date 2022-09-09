@@ -49,15 +49,20 @@ function App() {
         setID,
       }}
     >
+      
       <BrowserRouter>
+      
         <Routes>
           {!userInfo&& 
           <Route
             index
             element={
-              <>
+              <div id="body-wrapper">
+             
                 <About />
-              </>
+        
+              </div>
+                
             }
           />
 }
@@ -94,8 +99,10 @@ function App() {
             </>
           )}
         </Routes>
+        
       </BrowserRouter>
       <Footer />
+    
     </data.Provider>
   );
 }
