@@ -23,7 +23,7 @@ width:  400px;
 .resume-container{
   display: flex;
   flex-direction: column;
- 
+  width: 100%;
 }
 .resume--post-container{
   display: flex;

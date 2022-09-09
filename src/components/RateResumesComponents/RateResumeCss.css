@@ -23,8 +23,7 @@
 .resume-container{
 height: 500px;
 display: flex;
-
-width: 400px;
+align-items: center;
 
 
 }

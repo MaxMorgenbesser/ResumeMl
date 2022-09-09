@@ -123,7 +123,9 @@ export default function RateResumeCarousel() {
                   </>
                 )}
                 <div className="resume-container">
-                  <embed src={resume.newRes.filebase64} style={contentStyle} />
+                  <div>
+                  <embed src={resume.newRes.filebase64} style={contentStyle} width="800px"/>
+                  </div>
                 </div>
               </div>
             );
