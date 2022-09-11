@@ -24,6 +24,7 @@ width:  400px;
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 700px;
 }
 .resume--post-container{
   display: flex;
@@ -41,3 +42,14 @@ width:  400px;
 
 }
 
+#spinners{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+
+}
+
+#lastone{
+overflow: scroll;
+}

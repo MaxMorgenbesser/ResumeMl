@@ -61,7 +61,7 @@ export default function RateResumeCarousel() {
         >
           {resumes.map((resume) => {
             return (
-              <div key={resume._id}>
+              <div key={resume._id} id="lastone">
                 <br />
                 <br />
                 <div id="update-stuff">
@@ -124,7 +124,8 @@ export default function RateResumeCarousel() {
                 )}
                 <div className="resume-container">
                   <div>
-                  <embed src={resume.newRes.filebase64} style={contentStyle} width="800px"/>
+                  <embed src={resume.newRes.filebase64} style={contentStyle} width="500px" height="1200px"
+                  />
                   </div>
                 </div>
               </div>
@@ -136,11 +137,13 @@ export default function RateResumeCarousel() {
   } else {
     return (
       <>
+      <div id="spinners">
         <Space size="middle">
           <Spin size="small" />
           <Spin />
           <Spin size="large" />
         </Space>{" "}
+        </div>
       </>
     );
   }
